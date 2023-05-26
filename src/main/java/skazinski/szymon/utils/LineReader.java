@@ -5,11 +5,9 @@ import java.util.Scanner;
 
 public class LineReader {
 
-    private final InputStream inputStream;
     private final Scanner scanner;
 
     public LineReader(InputStream inputStream) {
-        this.inputStream = inputStream;
         scanner = new Scanner(inputStream);
     }
 
