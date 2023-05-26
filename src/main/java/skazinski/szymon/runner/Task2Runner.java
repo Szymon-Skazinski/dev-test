@@ -1,8 +1,8 @@
 package skazinski.szymon.runner;
 
 import skazinski.szymon.task2.Task2;
-import skazinski.szymon.utils.Printer;
-import skazinski.szymon.utils.Reader;
+import skazinski.szymon.util.printer.Printer;
+import skazinski.szymon.util.reader.Reader;
 
 import java.util.Arrays;
 import java.util.List;

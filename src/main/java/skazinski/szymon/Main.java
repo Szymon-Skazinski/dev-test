@@ -4,10 +4,10 @@ import skazinski.szymon.runner.Task1Runner;
 import skazinski.szymon.runner.Task2Runner;
 import skazinski.szymon.runner.Task3Runner;
 import skazinski.szymon.runner.TaskRunner;
-import skazinski.szymon.utils.CommandLinePrinter;
-import skazinski.szymon.utils.CommandLineReader;
-import skazinski.szymon.utils.Printer;
-import skazinski.szymon.utils.Reader;
+import skazinski.szymon.util.printer.CommandLinePrinter;
+import skazinski.szymon.util.reader.CommandLineReader;
+import skazinski.szymon.util.printer.Printer;
+import skazinski.szymon.util.reader.Reader;
 
 import java.util.Scanner;
 

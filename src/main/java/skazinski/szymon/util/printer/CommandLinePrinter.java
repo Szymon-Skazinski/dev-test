@@ -1,4 +1,4 @@
-package skazinski.szymon.utils;
+package skazinski.szymon.util.printer;
 
 public class CommandLinePrinter implements Printer {
 

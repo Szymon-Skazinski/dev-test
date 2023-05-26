@@ -1,4 +1,4 @@
-package skazinski.szymon.utils;
+package skazinski.szymon.util.reader;
 
 import java.util.Scanner;
 
