@@ -1,4 +1,4 @@
-package skazinski.szymon.task2;
+package skazinski.szymon.task.task2;
 
 import java.util.*;
 import java.util.stream.Collectors;

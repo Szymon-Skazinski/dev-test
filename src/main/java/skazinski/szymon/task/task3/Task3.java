@@ -1,23 +1,24 @@
-package skazinski.szymon.task3;
+package skazinski.szymon.task.task3;
 
-import java.util.Comparator;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Task3 {
 
     public int getNumberOfGraphs(List<List<Integer>> inputGraphs) {
-        List<Graph> graphs = getGraphsFromInput(inputGraphs);
-
-        graphs.sort(Comparator.comparingInt(Graph::getFirst));
+        List<Graph> graphs = getGraphsFromInput(inputGraphs)
+                .stream()
+                .sorted()
+                .collect(Collectors.toList());
 
         List<Graph> joinedGraphs = joinGraphs(graphs);
-
         return joinedGraphs.size();
     }
 
     private List<Graph> getGraphsFromInput(List<List<Integer>> inputGraphs) {
-        List<Graph> graphs = new LinkedList<>();
+        List<Graph> graphs = new ArrayList<>();
         for (List<Integer> integers : inputGraphs) {
             Graph graph = new Graph();
             graph.addVertex(integers.get(0));

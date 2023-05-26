@@ -1,4 +1,4 @@
-package skazinski.szymon.task3;
+package skazinski.szymon.task.task3;
 
 import java.util.SortedSet;
 import java.util.TreeSet;

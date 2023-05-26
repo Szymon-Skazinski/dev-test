@@ -1,4 +1,4 @@
-package skazinski.szymon.task1;
+package skazinski.szymon.task.task1;
 
 
 import org.testng.Assert;

@@ -1,7 +1,7 @@
 package skazinski.szymon.runner;
 
-import skazinski.szymon.task1.Measurements;
-import skazinski.szymon.task1.Task1;
+import skazinski.szymon.task.task1.Measurements;
+import skazinski.szymon.task.task1.Task1;
 import skazinski.szymon.util.printer.Printer;
 import skazinski.szymon.util.reader.Reader;
 

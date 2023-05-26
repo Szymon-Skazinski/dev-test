@@ -1,6 +1,6 @@
 package skazinski.szymon.runner;
 
-import skazinski.szymon.task3.Task3;
+import skazinski.szymon.task.task3.Task3;
 import skazinski.szymon.util.printer.Printer;
 import skazinski.szymon.util.reader.Reader;
 

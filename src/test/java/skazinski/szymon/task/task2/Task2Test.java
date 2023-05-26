@@ -1,4 +1,4 @@
-package skazinski.szymon.task2;
+package skazinski.szymon.task.task2;
 
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
