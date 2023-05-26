@@ -1,10 +1,9 @@
 package skazinski.szymon.runner;
 
 import skazinski.szymon.task2.Task2;
-import skazinski.szymon.utils.CommandLinePrinter;
-import skazinski.szymon.utils.CommandLineReader;
+import skazinski.szymon.utils.Printer;
+import skazinski.szymon.utils.Reader;
 
-import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -12,11 +11,11 @@ import java.util.stream.Collectors;
 
 public class Task2Runner implements TaskRunner {
 
-    private final CommandLineReader reader;
-    private final CommandLinePrinter printer;
+    private final Reader reader;
+    private final Printer printer;
 
-    public Task2Runner(InputStream inputStream, CommandLinePrinter printer) {
-        this.reader = new CommandLineReader(inputStream);
+    public Task2Runner(Reader reader, Printer printer) {
+        this.reader = reader;
         this.printer = printer;
     }
 
@@ -24,7 +23,7 @@ public class Task2Runner implements TaskRunner {
     public void runTask() {
         printer.printLine("Please provide list of integers separated by space: ");
 
-        String[] strings = reader.readLine();
+        String[] strings = reader.readLines();
         List<Integer> integers = Arrays.stream(strings).map(Integer::parseInt).collect(Collectors.toList());
 
         Task2 task2 = new Task2();
@@ -36,7 +35,7 @@ public class Task2Runner implements TaskRunner {
                         .collect(Collectors.joining(" ")))
                 .collect(Collectors.joining("\n"));
 
-        printer.printLine("\nOutput:\n" + output);
+        printer.printLine("\nOutput:\n\n" + output);
 
     }
 }

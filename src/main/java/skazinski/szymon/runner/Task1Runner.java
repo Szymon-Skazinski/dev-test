@@ -1,41 +1,34 @@
 package skazinski.szymon.runner;
 
-import skazinski.szymon.task2.Task2;
-import skazinski.szymon.utils.CommandLineReader;
+import skazinski.szymon.task1.Measurements;
+import skazinski.szymon.task1.Task1;
 import skazinski.szymon.utils.Printer;
+import skazinski.szymon.utils.Reader;
 
-import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Task1Runner implements TaskRunner {
 
-    private final CommandLineReader reader;
+    private final Reader reader;
     private final Printer printer;
 
-    public Task1Runner(InputStream inputStream, Printer printer) {
-        this.reader = new CommandLineReader(inputStream);
+    public Task1Runner(Reader reader, Printer printer) {
+        this.reader = reader;
         this.printer = printer;
     }
 
     @Override
     public void runTask() {
         printer.printLine("Please provide list of integers separated by space: ");
-        String[] strings = reader.readLine();
+        String[] strings = reader.readLines();
         List<Integer> integers = Arrays.stream(strings).map(Integer::parseInt).collect(Collectors.toList());
 
-        Task2 task2 = new Task2();
-        List<List<Integer>> pairs = task2.getPairs(integers);
+        Task1 task1 = new Task1();
+        Measurements measurements = task1.getBasicMeasurements(integers);
 
-        String output = pairs.stream()
-                .map(ints -> ints.stream()
-                        .map(Objects::toString)
-                        .collect(Collectors.joining(" ")))
-                .collect(Collectors.joining("\n"));
-
-        printer.printLine("\nOutput:\n" + output);
+        printer.printLine("\nOutput:\n\n" + measurements);
 
     }
 }

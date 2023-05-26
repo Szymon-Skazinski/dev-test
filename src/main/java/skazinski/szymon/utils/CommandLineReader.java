@@ -1,21 +1,18 @@
 package skazinski.szymon.utils;
 
-import java.io.InputStream;
 import java.util.Scanner;
 
-public class CommandLineReader {
+public class CommandLineReader implements Reader {
 
-    private final Scanner scanner;
+    private final Scanner scanner = new Scanner(System.in);
 
-    public CommandLineReader(InputStream inputStream) {
-        scanner = new Scanner(inputStream);
-    }
-
-    public String[] readLine() {
+    @Override
+    public String[] readLines() {
         String line = scanner.nextLine();
         return line.split(" ");
     }
 
+    @Override
     public int readNextInt() {
         return scanner.nextInt();
     }

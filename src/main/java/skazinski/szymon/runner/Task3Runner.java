@@ -1,21 +1,20 @@
 package skazinski.szymon.runner;
 
 import skazinski.szymon.task3.Task3;
-import skazinski.szymon.utils.CommandLineReader;
 import skazinski.szymon.utils.Printer;
+import skazinski.szymon.utils.Reader;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Task3Runner implements TaskRunner {
 
-    private final CommandLineReader reader;
+    private final Reader reader;
     private final Printer printer;
 
-    public Task3Runner(InputStream inputStream, Printer printer) {
-        this.reader = new CommandLineReader(inputStream);
+    public Task3Runner(Reader reader, Printer printer) {
+        this.reader = reader;
         this.printer = printer;
     }
 
@@ -27,19 +26,19 @@ public class Task3Runner implements TaskRunner {
         printer.printLine(intro);
 
         int linesCount = reader.readNextInt();
-        List<List<Integer>> graphsFromInput = getGraphsFromInput(reader, linesCount);
+        List<List<Integer>> graphsFromInput = getGraphsFromInput(linesCount);
 
         Task3 task3 = new Task3();
         int numberOfGraphs = task3.getNumberOfGraphs(graphsFromInput);
-        printer.printLine("\nOutput:\n" + numberOfGraphs);
+        printer.printLine("\nOutput:\n\n" + numberOfGraphs);
     }
 
-    private static List<List<Integer>> getGraphsFromInput(CommandLineReader commandLineReader, int linesCount) {
+    private List<List<Integer>> getGraphsFromInput( int linesCount) {
         List<List<Integer>> graphs = new LinkedList<>();
         for (int i = 0; i < linesCount; i++) {
             List<Integer> graph = new ArrayList<>();
-            graph.add(commandLineReader.readNextInt());
-            graph.add(commandLineReader.readNextInt());
+            graph.add(reader.readNextInt());
+            graph.add(reader.readNextInt());
             graphs.add(graph);
         }
         return graphs;

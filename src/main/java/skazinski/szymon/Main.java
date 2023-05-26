@@ -6,33 +6,39 @@ import skazinski.szymon.runner.Task3Runner;
 import skazinski.szymon.runner.TaskRunner;
 import skazinski.szymon.utils.CommandLinePrinter;
 import skazinski.szymon.utils.CommandLineReader;
+import skazinski.szymon.utils.Printer;
+import skazinski.szymon.utils.Reader;
+
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        CommandLineReader reader = new CommandLineReader(System.in);
-        System.out.println("Please provide number of task: ");
-        System.out.println("1. Task 1");
-        System.out.println("2. Task 2");
-        System.out.println("3. Task 3");
-        int taskNumber = reader.readNextInt();
+        Reader reader = new CommandLineReader();
+        Printer printer = new CommandLinePrinter();
+
+        printer.printLine("1. Task 1");
+        printer.printLine("2. Task 2");
+        printer.printLine("3. Task 3");
+        Scanner scanner = new Scanner(System.in);
+        int taskNumber = 0;
 
         while (taskNumber < 1 || taskNumber > 3) {
-            taskNumber = reader.readNextInt();
+            printer.printLine("Please provide number of task: ");
+            taskNumber = scanner.nextInt();
         }
 
-        CommandLinePrinter printer = new CommandLinePrinter();
         TaskRunner runner;
         switch (taskNumber) {
             case 1:
-                runner = new Task1Runner(System.in, printer);
+                runner = new Task1Runner(reader, printer);
                 break;
             case 2:
-                runner = new Task2Runner(System.in, printer);
+                runner = new Task2Runner(reader, printer);
                 break;
             default:
-                runner = new Task3Runner(System.in, printer);
+                runner = new Task3Runner(reader, printer);
                 break;
         }
         runner.runTask();
