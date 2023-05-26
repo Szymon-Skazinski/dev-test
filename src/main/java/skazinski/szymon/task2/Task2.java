@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class Task2 {
 
-    public void getPairs(InputStream inputStream) {
+    public List<Integer> getPairs(InputStream inputStream) {
         LineReader lineReader = new LineReader(inputStream);
         String[] strings = lineReader.readLine();
 
@@ -16,20 +16,14 @@ public class Task2 {
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
 
-        List<SortedSet<Integer>> pairs = getPairs(integers);
-
-        String sorted = pairs.stream()
+        return findPairs(integers).stream()
                 .sorted(Comparator.comparingInt(SortedSet::first))
-                .map(ints -> ints.stream()
-                        .map(Objects::toString)
-                        .collect(Collectors.joining(" ")))
-                .collect(Collectors.joining("\n"));
-
-        System.out.println(sorted);
+                .flatMap(Collection::stream)
+                .collect(Collectors.toList());
     }
 
 
-    private List<SortedSet<Integer>> getPairs(List<Integer> integers) {
+    private List<SortedSet<Integer>> findPairs(List<Integer> integers) {
         List<SortedSet<Integer>> pairs = new LinkedList<>();
 
         for (int i = 0; i < integers.size(); i++) {
@@ -47,8 +41,4 @@ public class Task2 {
         return pairs;
     }
 
-
 }
-
-//zakladam ze liczby moga byc dodatnie i ujemne (gdyby byly tylko dodatnie to moznaby dodatkowo ograniczyc sprawdzanie liczb wiekszych od 0)
-//uzylem LinkedList zamiast List zeby uniknac ciaglego powiekszania List
