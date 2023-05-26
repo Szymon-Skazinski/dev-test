@@ -1,18 +1,13 @@
 package skazinski.szymon.task3;
 
-import skazinski.szymon.utils.LineReader;
-
-import java.io.InputStream;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Task3 {
 
-    public int getNumberOfGraphs(InputStream inputStream) {
-        LineReader lineReader = new LineReader(inputStream);
-        int linesCount = lineReader.readNextInt();
-        List<Graph> graphs = getGraphsFromInput(lineReader, linesCount);
+    public int getNumberOfGraphs(List<List<Integer>> inputGraphs) {
+        List<Graph> graphs = getGraphsFromInput(inputGraphs);
 
         graphs.sort(Comparator.comparingInt(Graph::getFirst));
 
@@ -21,12 +16,12 @@ public class Task3 {
         return joinedGraphs.size();
     }
 
-    private List<Graph> getGraphsFromInput(LineReader lineReader, int linesCount) {
+    private List<Graph> getGraphsFromInput(List<List<Integer>> inputGraphs) {
         List<Graph> graphs = new LinkedList<>();
-        for (int i = 0; i < linesCount; i++) {
+        for (List<Integer> integers : inputGraphs) {
             Graph graph = new Graph();
-            graph.addVertex(lineReader.readNextInt());
-            graph.addVertex(lineReader.readNextInt());
+            graph.addVertex(integers.get(0));
+            graph.addVertex(integers.get(1));
             graphs.add(graph);
         }
         return graphs;
