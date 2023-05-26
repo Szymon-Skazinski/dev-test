@@ -3,11 +3,11 @@ package skazinski.szymon.utils;
 import java.io.InputStream;
 import java.util.Scanner;
 
-public class LineReader {
+public class CommandLineReader {
 
     private final Scanner scanner;
 
-    public LineReader(InputStream inputStream) {
+    public CommandLineReader(InputStream inputStream) {
         scanner = new Scanner(inputStream);
     }
 

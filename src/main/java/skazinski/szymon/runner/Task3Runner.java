@@ -1,7 +1,7 @@
 package skazinski.szymon.runner;
 
 import skazinski.szymon.task3.Task3;
-import skazinski.szymon.utils.LineReader;
+import skazinski.szymon.utils.CommandLineReader;
 import skazinski.szymon.utils.Printer;
 
 import java.io.InputStream;
@@ -11,11 +11,11 @@ import java.util.List;
 
 public class Task3Runner implements TaskRunner {
 
-    private final LineReader lineReader;
+    private final CommandLineReader reader;
     private final Printer printer;
 
     public Task3Runner(InputStream inputStream, Printer printer) {
-        this.lineReader = new LineReader(inputStream);
+        this.reader = new CommandLineReader(inputStream);
         this.printer = printer;
     }
 
@@ -26,20 +26,20 @@ public class Task3Runner implements TaskRunner {
                 "where each pair identifies a connection between two vertices in graph ";
         printer.printLine(intro);
 
-        int linesCount = lineReader.readNextInt();
-        List<List<Integer>> graphsFromInput = getGraphsFromInput(lineReader, linesCount);
+        int linesCount = reader.readNextInt();
+        List<List<Integer>> graphsFromInput = getGraphsFromInput(reader, linesCount);
 
         Task3 task3 = new Task3();
         int numberOfGraphs = task3.getNumberOfGraphs(graphsFromInput);
         printer.printLine("\nOutput:\n" + numberOfGraphs);
     }
 
-    private static List<List<Integer>> getGraphsFromInput(LineReader lineReader, int linesCount) {
+    private static List<List<Integer>> getGraphsFromInput(CommandLineReader commandLineReader, int linesCount) {
         List<List<Integer>> graphs = new LinkedList<>();
         for (int i = 0; i < linesCount; i++) {
             List<Integer> graph = new ArrayList<>();
-            graph.add(lineReader.readNextInt());
-            graph.add(lineReader.readNextInt());
+            graph.add(commandLineReader.readNextInt());
+            graph.add(commandLineReader.readNextInt());
             graphs.add(graph);
         }
         return graphs;

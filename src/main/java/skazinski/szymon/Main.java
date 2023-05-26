@@ -5,21 +5,21 @@ import skazinski.szymon.runner.Task2Runner;
 import skazinski.szymon.runner.Task3Runner;
 import skazinski.szymon.runner.TaskRunner;
 import skazinski.szymon.utils.CommandLinePrinter;
-import skazinski.szymon.utils.LineReader;
+import skazinski.szymon.utils.CommandLineReader;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        LineReader lineReader = new LineReader(System.in);
+        CommandLineReader reader = new CommandLineReader(System.in);
         System.out.println("Please provide number of task: ");
         System.out.println("1. Task 1");
         System.out.println("2. Task 2");
         System.out.println("3. Task 3");
-        int taskNumber = lineReader.readNextInt();
+        int taskNumber = reader.readNextInt();
 
         while (taskNumber < 1 || taskNumber > 3) {
-            taskNumber = lineReader.readNextInt();
+            taskNumber = reader.readNextInt();
         }
 
         CommandLinePrinter printer = new CommandLinePrinter();
