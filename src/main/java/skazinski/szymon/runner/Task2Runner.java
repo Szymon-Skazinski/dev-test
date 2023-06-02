@@ -27,7 +27,7 @@ public class Task2Runner implements TaskRunner {
         List<Integer> integers = Arrays.stream(strings).map(Integer::parseInt).collect(Collectors.toList());
 
         Task2 task2 = new Task2();
-        List<List<Integer>> pairs = task2.getPairs(integers);
+        List<List<Integer>> pairs = task2.getPairs(integers,13);
 
         String output = pairs.stream()
                 .map(ints -> ints.stream()
