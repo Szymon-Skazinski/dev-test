@@ -10,11 +10,15 @@ public class Task3Test {
 
     @DataProvider
     public Object[][] getNumberOfGraphsDataProvider() {
+
         return new Object[][]{
                 {List.of(List.of(2, 3), List.of(1, 2), List.of(5, 6)), 2},
                 {List.of(List.of(1, 2), List.of(2, 3), List.of(4, 5)), 2},
                 {List.of(List.of(3, 4), List.of(1, 2), List.of(2, 3), List.of(4, 5)), 1},
                 {List.of(List.of(1, 2), List.of(3, 4), List.of(5, 6)), 3},
+                {List.of(List.of(1, 6), List.of(5, 6)), 1},
+                {List.of(List.of(1, 6), List.of(4, 5), List.of(5, 6), List.of(3, 4), List.of(1, 2)), 1},
+                {List.of(List.of(1, 4), List.of(3, 4), List.of(2,3)), 1},
         };
     }
 

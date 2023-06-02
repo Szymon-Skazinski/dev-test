@@ -1,50 +1,50 @@
 package skazinski.szymon.task.task3;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.*;
 
 public class Task3 {
 
+    Set<Integer> visited = new HashSet<>();
+
     public int getNumberOfGraphs(List<List<Integer>> inputGraphs) {
-        List<Graph> graphs = getGraphsFromInput(inputGraphs)
-                .stream()
-                .sorted()
-                .collect(Collectors.toList());
+        Map<Integer, Set<Integer>> adjacencyList = buildAdjacencyMap(inputGraphs);
 
-        List<Graph> joinedGraphs = joinGraphs(graphs);
-        return joinedGraphs.size();
-    }
+        int separatedGraphsCount = 0;
 
-    private List<Graph> getGraphsFromInput(List<List<Integer>> inputGraphs) {
-        List<Graph> graphs = new ArrayList<>();
-        for (List<Integer> integers : inputGraphs) {
-            Graph graph = new Graph();
-            graph.addVertex(integers.get(0));
-            graph.addVertex(integers.get(1));
-            graphs.add(graph);
-        }
-        return graphs;
-    }
-
-    private List<Graph> joinGraphs(List<Graph> graphs) {
-        List<Graph> joinedGraphs = new LinkedList<>();
-        for (int i = 0; i < graphs.size(); i++) {
-            Graph graph = graphs.get(i);
-            for (Graph graph1 : graphs) {
-                Integer firstVertex = graph.getFirst();
-                Integer lastVertex = graph.getLast();
-
-                Integer firstVertex1 = graph1.getFirst();
-                Integer lastVertex1 = graph1.getLast();
-                if (firstVertex.equals(lastVertex1) || lastVertex.equals(firstVertex1)) {
-                    graph.joinGraphs(graph1);
-                    i++;
-                }
+        for (Integer vertex : adjacencyList.keySet()) {
+            if (!visited.contains(vertex)) {
+                depthFirstSearch(vertex, adjacencyList);
+                separatedGraphsCount++;
             }
-            joinedGraphs.add(graph);
         }
-        return joinedGraphs;
+
+        return separatedGraphsCount;
+    }
+
+    private Map<Integer, Set<Integer>> buildAdjacencyMap(List<List<Integer>> inputGraphs) {
+        Map<Integer, Set<Integer>> adjacencyMap = new HashMap<>();
+
+        for (List<Integer> connection : inputGraphs) {
+            int vertex1 = connection.get(0);
+            int vertex2 = connection.get(1);
+
+            adjacencyMap.putIfAbsent(vertex1, new HashSet<>());
+            adjacencyMap.putIfAbsent(vertex2, new HashSet<>());
+
+            adjacencyMap.get(vertex1).add(vertex2);
+            adjacencyMap.get(vertex2).add(vertex1);
+        }
+
+        return adjacencyMap;
+    }
+
+    private void depthFirstSearch(Integer vertex, Map<Integer, Set<Integer>> adjacencyMap) {
+        visited.add(vertex);
+
+        for (Integer adjacentVertex : adjacencyMap.get(vertex)) {
+            if (!visited.contains(adjacentVertex)) {
+                depthFirstSearch(adjacentVertex, adjacencyMap);
+            }
+        }
     }
 }

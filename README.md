@@ -13,6 +13,6 @@ All the task have their own runner located in `skazinski.szymon.runner.*` packag
     * This algorithm iterates through each number in the list and checks if the complement of that number `(givenSum - number)` exists in the HashMap. To handle duplicate numbers, it tracks of the occurrences of each number in the list by storing it number of occurrence as a value in the HashMap.
     
 * Task 3
-    * For sake of clarity I created `Graph` class that is wrapper of `SortedSet` with all needed methods. In order to sort it I implemented `Comparable` interface instead of using `Comparator`;
+    * This solution uses adjacency map that includes each vertex as a key and neighbours as a value. To count disconnected graphs in the input map, DFS (Depth-First Search) algorithm is used. It starts from a chosen vertex and explores as far as possible along each branch before backtracking. The algorithm marks visited vertices and continues recursively to explore each unvisited neighbor. For each new disconnected graph encountered, the count of disconnected graphs is incremented.
     
 
